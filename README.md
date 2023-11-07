@@ -42,5 +42,3 @@ The code is organized in the following python scripts:
 
 ## General flow
 The main script (dblp_backbone.py) reads the input data and executes the methodology for the network creation and backbone extraction, as described in the manuscript. Then it performs the experiments following the organization described in the manuscript. Some information are displayed in the standard output. The figures used in the manuscript are stored in the 'results' folder.
-
-## Parameterization
