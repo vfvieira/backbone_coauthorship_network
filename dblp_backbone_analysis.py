@@ -1,6 +1,7 @@
 import random
 from random import sample
-from BackboneExtractor import backbone_from_DisparityFilter
+#from BackboneExtractor import backbone_from_DisparityFilter
+import backboning
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -18,6 +19,19 @@ def backbone_extractor(full_networks,significance):
 		backbones[snapshot] = backbone_from_DisparityFilter(full_networks[snapshot], confidence_value)
 		#print("snapshot (backbone dentro):", nx.info(backbones[snapshot]))
 	return backbones
+	
+
+def backbone_from_DisparityFilter(g, confidence=0.90):
+    temp = "temp.csv"
+    df = nx.to_pandas_edgelist(g)
+    df.rename(columns={"source": "src", "target": "trg"},  inplace=True)
+    df.to_csv(temp, index = None,sep='\t')
+    table, nnodes, nnedges = backboning.read(temp, "weight", triangular_input = True, consider_self_loops = True, undirected = True, drop_zeroes = True, sep = "\t")
+    nc_table = backboning.disparity_filter(table, undirected = True, return_self_loops = False)
+    nc_table = nc_table[nc_table['score'] >= confidence]
+    nc_table['weight'] = nc_table['nij']
+    G = nx.from_pandas_edgelist(nc_table, 'src', 'trg', ['weight'])
+    return G
 
 
 def calculate_probability_backbone(networks,backbones,single_full_network,top_ranked_full,all_ranked,filenames,num_top_ranked=None):

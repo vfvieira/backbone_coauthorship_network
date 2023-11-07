@@ -1,3 +1,12 @@
+# Backbone extraction code availabe at https://www.michelecoscia.com/?page_id=287
+# Please refer to:
+# Coscia, Michele, and Frank MH Neffke. "Network backboning with noisy data." 
+# 2017 IEEE 33rd International Conference on Data Engineering (ICDE). IEEE, 2017.
+
+# Input authorship data available at: https://github.com/edreqm/raise-of-hiperprolific
+# Please refer to:
+# Moreira, E., Meira, W., Gonçalves, M.A. et al. The rise of hyperprolific authors in computer science: characterization and implications. Scientometrics 128, 2945–2974 (2023). 
+
 import networkx as nx
 import numpy as np
 import pickle
@@ -30,8 +39,9 @@ if __name__ == "__main__":
 	print("Generating full networks...")
 	# Reads the 'network_content' dictionary and saves in a dictionary where the keys are the snapshot ids and the values are undirected networkx graphs.
 	full_networks = dblp_aux_functions.network_generator(network_content)
-	for snap_id in full_networks:
-		print(nx.info(full_networks[snap_id]))
+	#for snap_id in full_networks:
+	#	print(nx.info(full_networks[snap_id]))
+	
 	print("OK!\n")
 	
 	print("=========================")
@@ -50,8 +60,8 @@ if __name__ == "__main__":
 	print("Removing null degree (full networks)...")
 	# Removing authors with null degree (no authorship in the dataset)
 	full_networks = dblp_aux_functions.filter_null_degree(full_networks)
-	for snap_id in full_networks:
-		print(nx.info(full_networks[snap_id]))
+	#for snap_id in full_networks:
+	#	print(nx.info(full_networks[snap_id]))
 	print("OK!\n")
 	
 	
