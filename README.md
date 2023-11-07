@@ -14,6 +14,15 @@ The code has been executed using Python 3.10.12 and the following libraries:
 All libraries has been installed using pip, with the following command:
 - pip3 install <library>
 
+The execution also requires a backbone extraction script, available at: https://www.michelecoscia.com/?page_id=287
+Please refer to:
+Coscia, Michele, and Frank MH Neffke. "Network backboning with noisy data." 2017 IEEE 33rd International Conference on Data Engineering (ICDE). IEEE, 2017.
+
+## Input data
+Input authorship data available at: https://github.com/edreqm/raise-of-hiperprolific
+Please refer to:
+Moreira, E., Meira, W., Gonçalves, M.A. et al. The rise of hyperprolific authors in computer science: characterization and implications. Scientometrics 128, 2945–2974 (2023). 
+
 ## Execution
 The code is executed with the following command:
 - python3 dblp_backbone.py
